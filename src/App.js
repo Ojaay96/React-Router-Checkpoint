@@ -52,15 +52,16 @@ const App = () => {
     setFilteredMovies(filtered);
   };
 
-  const handleAddMovie = (newMovie) => {
-    setMovies([...movies, newMovie]);
+  const addMovieHandler = (newMovieDta) => {
+    setMovies([...movies, newMovieDta]);
+    setFilters([...movies, newMovieDta]);
     handleFilterChange("title", filters.title); // Reapply filters after adding a new movie
   };
 
   return (
     <div className="app">
       <Filter onFilterChange={handleFilterChange} />
-      <AddMovie />
+      <AddMovie newMovie={addMovieHandler} />
       <MovieList movies={filteredMovies} />
       {/* You can add a component or form for adding new movies */}
     </div>

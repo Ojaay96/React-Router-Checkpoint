@@ -1,59 +1,56 @@
 import React, { useState, useRef } from "react";
-
+import { Formik, Field, Form } from "formik";
 import { Button } from "react-bootstrap";
 
-const AddMovie = (addNew) => {
-  const [formData, setFormData] = useState({
-    title: "",
-    description: "",
-    rating: "",
-  });
-  const titleRef = useRef();
-  const descRef = useRef();
-  const ratingRef = useRef();
-
-  const handleChange = () => {
-    setFormData({
-      title: titleRef.current.value,
-      description: descRef.current.value,
-      rating: ratingRef.current.value,
-    });
+const AddMovie = ({ newMovie }) => {
+  const submitHandler = (formData) => {
+    newMovie(formData);
+    console.log(formData);
   };
-
   return (
-    <form
+    <div
       style={{
-        display: "flex",
-        justifyContent: "space-around",
-        padding: "10px",
-        fontSize: "medium",
+        margin: "10px",
+        border: "1px solid black",
+        borderRadius: "5px",
+        padding: "5px",
       }}
     >
-      <div>
-        <label htmlFor="title">Title</label>
-        <input id="title" ref={titleRef} type="text" onChange={handleChange} />
-      </div>
-      <div>
-        <label htmlFor="description">Description</label>
-        <input
-          id="description"
-          ref={descRef}
-          type="text"
-          onChange={handleChange}
-        />
-      </div>
-      <div>
-        <label htmlFor="title">Rating</label>
-        <input
-          id="rating"
-          ref={ratingRef}
-          type="text"
-          onChange={handleChange}
-        />
-      </div>
+      <h1>Add Movie</h1>
+      <Formik
+        initialValues={{
+          title: "",
+          description: "",
+          rating: "",
+          posterURL: "",
+        }}
+        onSubmit={submitHandler}
+      >
+        <Form>
+          <div style={{ display: "flex", marginBottom: "5px", gap: "50px" }}>
+            <label htmlFor="title">Name</label>
+            <Field name="title" type="text" />
+          </div>
 
-      <Button onSubmit={submitHandler}>Add Movie</Button>
-    </form>
+          <div style={{ display: "flex", marginBottom: "5px", gap: "15px" }}>
+            <label htmlFor="description">Description</label>
+            <Field name="description" type="text" />
+          </div>
+
+          <div style={{ display: "flex", marginBottom: "5px", gap: "50px" }}>
+            <label htmlFor="rating">Rating</label>
+            <Field name="rating" type="text" />
+          </div>
+
+          <div style={{ display: "flex", marginBottom: "5px", gap: "70px" }}>
+            <label htmlFor="posterURL">URL</label>
+            <Field name="posterURL" type="text" />
+          </div>
+
+          <button type="submit">Add movie</button>
+        </Form>
+      </Formik>
+    </div>
   );
 };
 

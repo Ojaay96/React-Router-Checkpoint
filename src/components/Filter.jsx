@@ -5,14 +5,13 @@ const Filter = ({ onFilterChange }) => {
     <div
       className="filter"
       style={{
-        display: "flex",
-        justifyContent: "space-around",
-        gap: "10px",
+        margin: "50px",
+        boder: "1px solid black",
+        borderRadius: "5px",
         padding: "10px",
-        fontSize: "medium",
       }}
     >
-      <h4>FILTER MOVIES</h4>
+      <h1>FILTER MOVIES</h1>
       <label>
         Title:
         <input

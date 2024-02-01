@@ -6,15 +6,16 @@ const MovieList = ({ movies }) => {
     <div
       style={{
         display: "flex",
-        justifyContent: "space-around",
+        justifyContent: "",
         gap: "10px",
         padding: "10px",
         fontSize: "medium",
       }}
     >
-      {movies.map((eachMovie) => {
+      {movies.map((eachMovie, index) => {
         return (
           <MovieCard
+            key={index}
             title={eachMovie.title}
             description={eachMovie.description}
             posterURL={eachMovie.posterURL}
