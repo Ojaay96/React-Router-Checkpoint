@@ -6,10 +6,13 @@ const MovieList = ({ movies }) => {
     <div
       style={{
         display: "flex",
+        flexWrap: "wrap",
         justifyContent: "",
         gap: "10px",
         padding: "10px",
         fontSize: "medium",
+        // maxWidth: "1024px",
+        width: "100%",
       }}
     >
       {movies.map((eachMovie, index) => {
@@ -20,6 +23,7 @@ const MovieList = ({ movies }) => {
             description={eachMovie.description}
             posterURL={eachMovie.posterURL}
             rating={eachMovie.rating}
+            link={eachMovie.link}
           />
         );
       })}
